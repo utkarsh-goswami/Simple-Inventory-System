@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Simple Inventory System</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+<style>
+
+table {
+   border-collapse: collapse;
+   width: 40%;
+}
+th, td {
+   text-align: left;
+   padding: 0px;
+}
+
+th {
+   background-color: blue;
+   color: white;
+}
+</style>
+</head>
+
+  <body>
+      <div class="container">
+      <div class="header">
+        <h2 class="text-muted">Python Flask App</h2>
+      </div>
+      <h3 align="center"><b>List of Items available in the shop</b></h3>
+       <div>
+           <table align = "center" cellpadding = "0" cellspacing = "0">
+              <tr>
+                 <th>Product Name</th>
+                 <th>Price</th>
+              
+              </tr>
+              
+              {% for row in data %}
+              <tr>
+                 <td>{{ row[0] }}</td>
+                 <td>{{ row[1] }}</td>
+              </tr>
+              {% endfor %}             
+
+           </table>
+                    
+           </div>     
+            
+      
+      <div class="jumbotron">
+        <h2>Simple Inventory System</h2>
+        <h5><div>
+               <tr>
+                  <td><pre> Enter item# {{ count }} </pre></td>
+               </tr>
+            </div> </h5>
+        <form action="{{ url_for('handle_data') }}" method="post" class="form-entry">
+        <label for="itemname" class="sr-only">Name</label>
+        <input type="name" name="itemname" id="itemname" class="form-control" placeholder="ProductName" required autofocus>
+        <label for="quantity" class="sr-only">Quantity</label>
+        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity" required autofocus> 
+        <input type="submit" value="submit" required autofocus>
+      </form>
+      </div>
+    </div>
+    <div style="text-align: center;">
+            <p><a class="btn btn-lg btn-success" href="checkout" role="button">Checkout</a>
+            </p>
+        </div>
+  </body>
+</html>
